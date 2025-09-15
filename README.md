@@ -9,6 +9,48 @@ One of the best features of the project is the mailing system. The user receives
 
 Note: For demonstration purposes only, the payment page was developed; it is not completely integrated with any payment gateway. Therefore, the demo orders will be placed for the time being with any payment card information.
 
+## Setup Instructions:
+
+### Prerequisites:
+- Java 24 or later
+- Apache Tomcat 10.1.28
+- MySQL 8.0.43
+- MySQL Workbench (optional for database management)
+
+### Database Setup:
+1. Create a MySQL database named `eazydeals`
+2. Import the provided SQL file: `eazydeals_maven.sql`
+3. Update database connection details in `src/main/java/com/eazydeals/helper/ConnectionProvider.java`
+
+### Project Setup:
+1. Clone this repository:
+   ```bash
+   git clone https://github.com/dipu00356-dev/e-commerce-website.git
+   ```
+2. Import the project into Eclipse EE or your preferred IDE
+3. Add the required JAR files to your project's `lib` folder:
+   - mysql-connector-j-8.0.31
+   - angus-activation-2.0.1
+   - jakarta.activation-api-2.1.2
+   - jakarta.mail-2.0.1
+4. Create `Product_imgs` directory in `src/main/webapp/`
+5. Configure Tomcat server in your IDE
+6. Deploy and run the project
+
+### Default Admin Credentials:
+- Email: admin@eazydeals.com
+- Password: admin123
+
+### Features:
+- User registration and authentication
+- Product browsing with category filters
+- Shopping cart functionality
+- Wishlist management
+- Order management
+- Admin panel for product and user management
+- Email notifications for registration, orders, and password reset
+- Responsive design with Bootstrap
+
 ### Technologies used:-
 1. Front-End Development:
 - HTML
