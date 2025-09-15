@@ -40,6 +40,9 @@ public class AdminDao {
 	public Admin getAdminByEmailPassword(String email, String password) {
 		Admin admin = null;
 		try {
+			// Debug logging
+			System.out.println("AdminDao - Searching for admin with email: " + email + ", password: " + password);
+			
 			String query = "select * from admin where email = ? and password = ?";
 			PreparedStatement psmt = this.con.prepareStatement(query);
 			psmt.setString(1, email);
@@ -53,10 +56,18 @@ public class AdminDao {
 				admin.setEmail(set.getString("email"));
 				admin.setPassword(set.getString("password"));
 				admin.setPhone(set.getString("phone"));
+				
+				// Debug logging
+				System.out.println("AdminDao - Found admin: " + admin.getName() + ", ID: " + admin.getId());
+			}
+			
+			if (admin == null) {
+				System.out.println("AdminDao - No admin found with provided credentials");
 			}
 
 		} catch (Exception e) {
 			e.printStackTrace();
+			System.out.println("AdminDao - Exception: " + e.getMessage());
 		}
 		return admin;
 	}

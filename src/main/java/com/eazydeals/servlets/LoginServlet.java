@@ -50,8 +50,17 @@ public class LoginServlet extends HttpServlet {
 				String userName = request.getParameter("email");
 				String password = request.getParameter("password");
 
+				// Debug logging
+				System.out.println("Admin login attempt - Email: " + userName + ", Password: " + password);
+
 				AdminDao adminDao = new AdminDao(ConnectionProvider.getConnection());
 				Admin admin = adminDao.getAdminByEmailPassword(userName, password);
+				
+				// Debug logging
+				System.out.println("Admin object returned: " + (admin != null ? "Found" : "Not Found"));
+				if (admin != null) {
+					System.out.println("Admin details - ID: " + admin.getId() + ", Name: " + admin.getName());
+				}
 				
 				HttpSession session = request.getSession();
 				if (admin != null) {
@@ -65,6 +74,7 @@ public class LoginServlet extends HttpServlet {
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
+				System.out.println("Exception during admin login: " + e.getMessage());
 			}
 		}
 	}

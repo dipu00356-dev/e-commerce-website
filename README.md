@@ -51,6 +51,39 @@ Note: For demonstration purposes only, the payment page was developed; it is not
 - Email notifications for registration, orders, and password reset
 - Responsive design with Bootstrap
 
+## Troubleshooting:
+
+### Admin Login Issues:
+If you're experiencing "Invalid credentials" error with admin login:
+
+1. **Check Database Connection:**
+   - Ensure MySQL is running on localhost:3306
+   - Verify the database `eazydeals` exists
+   - Check that the connection credentials in `ConnectionProvider.java` match your MySQL setup
+
+2. **Verify Admin Users Exist:**
+   - Run the provided `create_admin.sql` script to ensure admin users exist:
+   ```sql
+   mysql -u root -p eazydeals < create_admin.sql
+   ```
+
+3. **Check Admin Table:**
+   ```sql
+   USE eazydeals;
+   SELECT * FROM admin;
+   ```
+
+4. **Common Issues:**
+   - Database not properly imported
+   - MySQL password changed from default empty password
+   - Case-sensitive email matching
+   - Special characters in password
+
+### Database Setup Issues:
+- Ensure MySQL 8.0+ is installed and running
+- Import the complete `eazydeals_maven.sql` file
+- Check that all tables are created with proper relationships
+
 ### Technologies used:-
 1. Front-End Development:
 - HTML
